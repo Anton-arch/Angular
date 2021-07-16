@@ -1,0 +1,27 @@
+$white: #fff;
+$black: #000;
+
+.header {
+  border: $white;
+  background: #2F80ED;
+
+  a {
+    display: inline-block;
+    border: none;
+    padding: 20px 39px 25px 29px;
+    font-size: 20px;
+    text-decoration: none;
+    color: $white;
+    transform: translateY(1px);
+
+
+    &.active {
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+      color: $black;
+      background: $white;
+    }
+  }
+}
+
+

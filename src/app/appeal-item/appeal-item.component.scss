@@ -1,0 +1,59 @@
+.appeal-item {
+  display: flex;
+  border-bottom: 1px solid #E0E0E0;
+  padding-right: 14px;
+  align-items: center;
+  transition: filter .15s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, .5));
+  }
+
+  .shape-btn {
+    display: block;
+    flex-shrink: 0;
+    margin-right: 20px;
+    border: none;
+    padding: 0;
+    width: 50px;
+    height: 89px;
+    background: transparent;
+    cursor: pointer;
+    transition: filter .1s ease-in-out;
+
+    &:hover {
+      filter: drop-shadow(0 0 5px rgb(0, 0, 0))
+    }
+  }
+
+  .block-name,
+  .block-midlename,
+  .block-surname,
+  .block-tel {
+    flex-shrink: 0;
+    font-size: 18px;
+  }
+
+  .block {
+    &-name {
+      width: 300px;
+    }
+
+    &-midlename {
+      width: 272px;
+    }
+
+    &-surname {
+      width: 260px;
+    }
+
+    &-tel {
+      width: 265px;
+    }
+
+    &-text {
+      line-height: 24px;
+    }
+  }
+}

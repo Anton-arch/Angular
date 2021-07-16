@@ -1,0 +1,46 @@
+<div class="main">
+  <h3 class="title">
+    Обращение №99
+  </h3>
+  <div class="container">
+    <div class="block">
+      <p class="block-name">{{ appeal.name }}</p>
+      <small class="block-description">Имя</small>
+    </div>
+    <div class="block">
+      <p class="block-midlename">{{ appeal.midlename }}</p>
+      <small class="block-description">Фамилия</small>
+    </div>
+    <div class="block">
+      <p class="block-surname">{{ appeal.surname }}</p>
+      <small class="block-description">Отчество</small>
+    </div>
+    <div class="block">
+      <p class="block-tel">{{ appeal.tel }}</p>
+      <small class="block-description">Номер телефона</small>
+    </div>
+    <div class="block">
+      <p class="block-text">
+        [Отрывок из книги доктора Роберта Джеймса III о существовании внеземного разума]<br><br>
+
+        Подумайте: в галактике миллиарды таких же звезд, как наше Солнце, и многие из них гораздо старше. У некоторых из них есть похожие на Землю планеты. На некоторых из этих планет, возможно, возникла разумная жизнь. Некоторые из этих разумных существ, возможно, изобрели межзвездные перелеты.<br><br>
+
+        Если какая-то цивилизация возникла раньше нашей, то кажется возможным, что даже с предполагаемой скоростью межзвездных перелетов они могли колонизировать всю галактику.<br><br>
+
+        Однако мы еще не обнаружили ни одной такой цивилизации. И они не установили контакт с нами.<br><br>
+
+        Почему?
+      </p>
+      <small class="block-description text">Текст обращения</small>
+    </div>
+
+    <button class="block-btn" (click)="deleteAppeal()">
+      Удалить &nbsp;&nbsp;
+      <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M1 16C1 17.1 1.9 18 3 18H11C12.1 18 13 17.1 13 16V4H1V16ZM14 1H10.5L9.5 0H4.5L3.5 1H0V3H14V1Z" fill="white"/>
+      </svg>
+    </button>
+  </div>
+
+</div>
+

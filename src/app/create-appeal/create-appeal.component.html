@@ -1,0 +1,34 @@
+<div class="container">
+  <form class="form" [formGroup]="form" (ngSubmit)="submit()">
+    <fieldset class="fieldset">
+      <legend class="legend">Имя</legend>
+      <input  class="input-field" type="text" name="name" formControlName="name" appInputFocused>
+    </fieldset>
+
+    <fieldset class="fieldset">
+      <legend class="legend">Фамилия</legend>
+      <input class="input-field" type="text" name="midlename" formControlName="midlename" appInputFocused>
+    </fieldset>
+
+    <fieldset class="fieldset" [disabled]="checked">
+      <legend class="legend">Отчество</legend>
+      <input class="input-field" type="text" name="surname" formControlName="surname" appInputFocused>
+    </fieldset>
+
+    <label class="label"><input class="checkbox" type="checkbox" [checked]="checked" (click)="onChangeChecked()" formControlName="hasntSurname"><span class="custom-checkbox"></span><span class="label-text">Нет отчества</span></label>
+
+    <fieldset class="fieldset">
+      <legend class="legend">Номер телефона</legend>
+      <!-- <p-inputMask class="input-field" styleClass="input-field" type="tel" name="tel" formControlName="tel" appInputFocused mask="+7 (999) 9999999" placeholder="+7 (...) ......." slotChar="."></p-inputMask> -->
+      <input class="input-field" #tel type="tel" name="tel" formControlName="tel" appInputFocused placeholder="+7 (...) .......">
+    </fieldset>
+
+    <fieldset class="fieldset">
+      <legend class="legend">Текст обращения</legend>
+      <textarea class="input-field textarea" name="text" formControlName="text" appInputFocused></textarea>
+    </fieldset>
+
+    <button class="subj-btn" type="submit">Создать обращение</button>
+  </form>
+</div>
+

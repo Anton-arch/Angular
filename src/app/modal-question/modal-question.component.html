@@ -1,0 +1,18 @@
+<div
+  #modal
+  class="overlay"
+>
+  <div class="modal-window">
+    <div class="modal-window-header">
+      <svg class="modal-info-icon" width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.80163 16C4.87692 16 0.880058 12.416 0.880058 8C0.880058 3.584 4.87692 0 9.80163 0C14.7263 0 18.7232 3.584 18.7232 8C18.7232 12.416 14.7263 16 9.80163 16ZM10.6935 3.99999H8.90923V8.79999H10.6935V3.99999ZM10.6935 10.4H8.90923V12H10.6935V10.4Z" fill="white"/>
+      </svg>
+      Вы действительно хотите удалить обращение №99?
+      <button class="modal-window-close" (click)="onCancelRemoveAppelaItem()"></button>
+    </div>
+    <div class="modal-window-footer">
+      <button class="modal-btn yes" (click)="onConfirmRemoveAppealItem()">Да</button>
+      <button class="modal-btn no" (click)="onCancelRemoveAppelaItem()">Нет</button>
+    </div>
+  </div>
+</div>

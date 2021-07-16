@@ -1,0 +1,86 @@
+$lightgrey: #E0E0E0;
+$blue: #1976D2;
+
+.container {
+  padding: 22px 1px 37px 29px;
+
+  .input-search {
+    margin-bottom: 23px;
+    margin-left: 12px;
+    border: 1px solid $lightgrey;
+    padding: 0 25px;
+    width: 303px;
+    height: 36px;
+    border-radius: 4px;
+    background: #fff;
+    transition: border-color .15s ease-in-out;
+
+    &:focus {
+      outline: none;
+      border-color: $blue;
+    }
+  }
+
+  .headers {
+    display: flex;
+    border-bottom: 1px solid $lightgrey;
+    padding-top: 15px;
+    padding-bottom: 13px;
+    padding-left: 70px;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.56);
+
+    &-name {
+      margin-right: 240px;
+    }
+
+    &-midlename {
+      margin-right: 185px;
+    }
+
+    &-surname {
+      margin-right: 173px;
+    }
+
+    &-tel {
+      margin-right: 201px;
+    }
+  }
+
+  .list-appeals {
+    margin: 0;
+    margin-bottom: 186px;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 89px;
+    font-size: 20px;
+
+    &-text1 {
+      margin-right: 20px;
+    }
+
+    &-text2 {
+      margin-right: 33px;
+    }
+
+    &-counter {
+      margin-right: 14px;
+      margin-left: 15px;
+      border: 1px solid $blue;
+      border-radius: 4px;
+      width: 20px;
+      height: 22px;
+      text-align: center;
+      line-height: 22px;
+    }
+  }
+
+}
+
+
