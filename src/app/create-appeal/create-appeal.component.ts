@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Subject } from 'rxjs';
 import { IAppeal } from '../appeal-page/appeal-page.component';
 import { DataProcessingService } from '../data-processing.service';
 
@@ -11,10 +12,12 @@ import { DataProcessingService } from '../data-processing.service';
 export class CreateAppealComponent implements OnInit {
 
   form!: FormGroup;
-
   checked = false;
 
-  constructor(private dataProcessingService: DataProcessingService) { }
+  constructor(
+    private dataProcessingService: DataProcessingService,
+    private renderer: Renderer2
+  ) { }
 
   ngOnInit() {
     this.dataProcessingService.getData();
@@ -42,6 +45,7 @@ export class CreateAppealComponent implements OnInit {
   }
 
   submit() {
+
     if(this.form.valid) {
       const formData: IAppeal = {...this.form.value};
       this.dataProcessingService.addAppeal(formData);
@@ -54,5 +58,15 @@ export class CreateAppealComponent implements OnInit {
   onChangeChecked() {
     this.checked = !this.checked;
     if(this.checked) this.form.get('surname')?.setValue('');
+  }
+
+  focused(event: Event) {
+    this.renderer.setStyle(event.composedPath()[2], 'border-color', '#2F80ED');
+    this.renderer.setStyle(event.composedPath()[2], 'color', '#2F80ED');
+  }
+
+  blured(event: Event) {
+    this.renderer.setStyle(event.composedPath()[2], 'border-color', null);
+    this.renderer.setStyle(event.composedPath()[2], 'color', null);
   }
 }

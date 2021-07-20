@@ -25,7 +25,7 @@
 
     <fieldset class="fieldset">
       <legend class="legend">Номер телефона</legend>
-      <p-inputMask class="input-field" styleClass="input-field" type="tel" name="tel" formControlName="tel" appInputFocused mask="+7 (999) 9999999" placeholder="+7 (...) ......." slotChar="."></p-inputMask>
+      <p-inputMask class="input-field" styleClass="input-field" type="tel" name="tel" formControlName="tel" appInputFocused mask="+7 (999) 9999999" placeholder="+7 (...) ......." slotChar="." [autoClear]='false' (onFocus)="focused($event)" (onBlur)="blured($event)"></p-inputMask>
       <!-- <input class="input-field" #tel type="tel" name="tel" formControlName="tel" appInputFocused placeholder="+7 (...) ......."> -->
       <small class="valid-field" *ngIf="form.get('tel')?.touched && form.get('tel')?.value === ''">Поле обязательно для заполнения</small>
     </fieldset>
