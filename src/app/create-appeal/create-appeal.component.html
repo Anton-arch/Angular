@@ -3,39 +3,80 @@
     <fieldset class="fieldset">
       <legend class="legend">Имя</legend>
       <input  class="input-field" type="text" name="name" formControlName="name" appInputFocused>
-      <small class="valid-field" *ngIf="form.get('name')?.touched && form.get('name')?.value === ''">Поле обязательно для заполнения</small>
+      <small
+        class="valid-field"
+        *ngIf="form.get('name')?.touched && form.get('name')?.value === ''"
+      >Поле обязательно для заполнения</small>
     </fieldset>
 
 
     <fieldset class="fieldset">
       <legend class="legend">Фамилия</legend>
       <input class="input-field" type="text" name="midlename" formControlName="midlename" appInputFocused>
-      <small class="valid-field" *ngIf="form.get('midlename')?.touched && form.get('midlename')?.value === ''">Поле обязательно для заполнения</small>
+      <small
+        class="valid-field"
+        *ngIf="form.get('midlename')?.touched && form.get('midlename')?.value === ''"
+      >Поле обязательно для заполнения</small>
     </fieldset>
 
 
     <fieldset class="fieldset" [disabled]="checked">
       <legend class="legend">Отчество</legend>
       <input class="input-field" type="text" name="surname" formControlName="surname" appInputFocused>
-      <small class="valid-field" *ngIf="form.get('surname')?.touched && !checked && form.get('surname')?.value === ''">Поле обязательно для заполнения, либо поставьте галочу напротив "Нет отчества"</small>
+      <small
+        class="valid-field"
+        *ngIf="form.get('surname')?.touched && !checked && form.get('surname')?.value === ''"
+      >Поле обязательно для заполнения, либо поставьте галочу напротив "Нет отчества"</small>
     </fieldset>
 
 
-    <label class="label"><input class="checkbox" type="checkbox" [checked]="checked" (click)="onChangeChecked()" formControlName="hasntSurname"><span class="custom-checkbox"></span><span class="label-text">Нет отчества</span></label>
+    <label class="label">
+      <input
+        class="checkbox"
+        type="checkbox"
+        [checked]="checked"
+        (click)="onChangeChecked()"
+        formControlName="hasntSurname"
+      >
+        <span class="custom-checkbox"></span>
+        <span class="label-text">Нет отчества</span>
+    </label>
 
     <fieldset class="fieldset">
       <legend class="legend">Номер телефона</legend>
-      <p-inputMask class="input-field" styleClass="input-field" type="tel" name="tel" formControlName="tel" appInputFocused mask="+7 (999) 9999999" placeholder="+7 (...) ......." slotChar="." [autoClear]='false' (onFocus)="focused($event)" (onBlur)="blured($event)"></p-inputMask>
-      <!-- <input class="input-field" #tel type="tel" name="tel" formControlName="tel" appInputFocused placeholder="+7 (...) ......."> -->
-      <small class="valid-field" *ngIf="form.get('tel')?.touched && form.get('tel')?.value === ''">Поле обязательно для заполнения</small>
+      <p-inputMask
+        class="input-field"
+        styleClass="input-field"
+        type="tel"
+        name="tel"
+        formControlName="tel"
+        appInputFocused
+        mask="+7 (999) 9999999"
+        placeholder="+7 (...) ......."
+        slotChar="."
+        [autoClear]='false'
+        (onFocus)="focused($event)"
+        (onBlur)="blured($event)"
+        (onComplete)="comleted()"
+      ></p-inputMask>
+      <small
+        class="valid-field"
+        *ngIf="form.get('tel')?.touched && form.get('tel')?.value === ''"
+      >Поле обязательно для заполнения</small>
+      <small
+        class="valid-field"
+        *ngIf="!completed && form.get('tel')?.touched && form.get('tel')?.value !== ''"
+      >Поле заполнено не до конца</small>
     </fieldset>
 
     <fieldset class="fieldset">
       <legend class="legend">Текст обращения</legend>
       <textarea class="input-field textarea" name="text" formControlName="text" appInputFocused></textarea>
-      <small class="valid-field" *ngIf="form.get('text')?.touched && form.get('text')?.value === ''">Поле обязательно для заполнения</small>
+      <small
+        class="valid-field"
+        *ngIf="form.get('text')?.touched && form.get('text')?.value === ''"
+      >Поле обязательно для заполнения</small>
     </fieldset>
-
 
     <button class="subj-btn" type="submit">Создать обращение</button>
   </form>

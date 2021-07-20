@@ -1,6 +1,5 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Subject } from 'rxjs';
 import { IAppeal } from '../appeal-page/appeal-page.component';
 import { DataProcessingService } from '../data-processing.service';
 
@@ -11,6 +10,7 @@ import { DataProcessingService } from '../data-processing.service';
 })
 export class CreateAppealComponent implements OnInit {
 
+  completed = false;
   form!: FormGroup;
   checked = false;
 
@@ -50,6 +50,8 @@ export class CreateAppealComponent implements OnInit {
       const formData: IAppeal = {...this.form.value};
       this.dataProcessingService.addAppeal(formData);
 
+      console.log(formData.tel.length)
+
       this.checked = false;
       this.form.reset();
     }
@@ -68,5 +70,9 @@ export class CreateAppealComponent implements OnInit {
   blured(event: Event) {
     this.renderer.setStyle(event.composedPath()[2], 'border-color', null);
     this.renderer.setStyle(event.composedPath()[2], 'color', null);
+  }
+
+  comleted() {
+    this.completed = true;
   }
 }
