@@ -24,7 +24,6 @@
           [tel]="item.tel"
           [text]="item.text"
           [index]="idx"
-          (deleteAppeal)="getIndexRemovedAppealItem($event)"
         >
         </app-appeal-item>
       </ul>
@@ -39,11 +38,7 @@
     </h2>
   </ng-template>
 
-  <app-modal-question
-    [modalVisible]="modalVisible"
-    (cancelReomoveAppelaItem)="canceledRemoveAppealItem($event)"
-    (confirmRemoveAppealItem)="confirmedRemoveAppealItem($event)"
-  ></app-modal-question>
+  <app-modal-question></app-modal-question>
 
   <div class="pagination">
     <span class="pagination-text1">

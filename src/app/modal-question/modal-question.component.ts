@@ -1,33 +1,36 @@
-import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef, Renderer2, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Renderer2, DoCheck } from '@angular/core';
+import { Router } from '@angular/router';
+import { DataProcessingService } from '../data-processing.service';
 
 @Component({
   selector: 'app-modal-question',
   templateUrl: './modal-question.component.html',
   styleUrls: ['./modal-question.component.scss']
 })
-export class ModalQuestionComponent implements OnInit, OnChanges {
-  @Input() modalVisible = false;
-
-  @Output() cancelReomoveAppelaItem = new EventEmitter();
-  @Output() confirmRemoveAppealItem = new EventEmitter();
-
+export class ModalQuestionComponent implements OnInit, DoCheck {
   @ViewChild('modal', {static: true}) modal: ElementRef | undefined;
 
-  constructor(private renderer: Renderer2) { }
+  constructor(
+    private renderer: Renderer2,
+    private dataProcessingService: DataProcessingService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    this.modalVisible ? this.renderer.setStyle(this.modal?.nativeElement, 'visibility', 'visible') : this.renderer.setStyle(this.modal?.nativeElement, 'visibility', 'hidden');
+  ngDoCheck() {
+    this.dataProcessingService.modalIsVisible ? this.renderer.setStyle(this.modal?.nativeElement, 'visibility', 'visible') : this.renderer.setStyle(this.modal?.nativeElement, 'visibility', 'hidden');
   }
 
   onCancelRemoveAppelaItem() {
-    this.cancelReomoveAppelaItem.emit(false);
+    this.dataProcessingService.modalIsVisible = false;
   }
 
   onConfirmRemoveAppealItem() {
-    this.confirmRemoveAppealItem.emit(true);
+    this.dataProcessingService.modalIsVisible = false;
+    this.dataProcessingService.filterData(this.dataProcessingService.delIdx);
+    this.router.navigate(['/appealPage']);
   }
 
 }

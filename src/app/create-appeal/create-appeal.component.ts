@@ -1,6 +1,7 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IAppeal } from '../appeal-page/appeal-page.component';
+import { DataProcessingService } from '../data-processing.service';
 
 @Component({
   selector: 'app-create-appeal',
@@ -11,11 +12,13 @@ export class CreateAppealComponent implements OnInit {
 
   form!: FormGroup;
 
-  checked: boolean = false;
+  checked = false;
 
-  constructor() { }
+  constructor(private dataProcessingService: DataProcessingService) { }
 
   ngOnInit() {
+    this.dataProcessingService.getData();
+
     this.form = new FormGroup({
       name: new FormControl('', [
         Validators.required
@@ -28,7 +31,7 @@ export class CreateAppealComponent implements OnInit {
       ]),
       hasntSurname: new FormControl(this.checked),
       tel: new FormControl('', [
-        Validators.required
+
       ]),
       text: new FormControl('',[
         Validators.required,
@@ -41,8 +44,7 @@ export class CreateAppealComponent implements OnInit {
   submit() {
     if(this.form.valid) {
       const formData: IAppeal = {...this.form.value};
-
-      console.log(formData);
+      this.dataProcessingService.addAppeal(formData);
 
       this.checked = false;
       this.form.reset();
@@ -51,6 +53,6 @@ export class CreateAppealComponent implements OnInit {
 
   onChangeChecked() {
     this.checked = !this.checked;
-    if(this.checked) this.form.get('surname')?.reset();
+    if(this.checked) this.form.get('surname')?.setValue('');
   }
 }

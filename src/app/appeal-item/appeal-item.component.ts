@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { DataProcessingService } from '../data-processing.service';
 
 @Component({
   selector: 'app-appeal-item',
@@ -11,17 +12,16 @@ export class AppealItemComponent implements OnInit {
   @Input() surname? = '';
   @Input() tel = '';
   @Input() text = '';
-  @Input() index: number | undefined;
+  @Input() index!: number;
 
-  @Output() deleteAppeal = new EventEmitter();
-
-  constructor() { }
+  constructor(private dataProcessingService: DataProcessingService) { }
 
   ngOnInit(): void {
   }
 
   deleteAppealItem(event: Event) {
     event.stopPropagation();
-    this.deleteAppeal.emit(this.index);
+    this.dataProcessingService.modalIsVisible = true;
+    this.dataProcessingService.delIdx = this.index;
   }
 }
