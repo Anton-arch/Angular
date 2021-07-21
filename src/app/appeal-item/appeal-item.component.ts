@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { DataProcessingService } from '../data-processing.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { DataProcessingService } from '../data-processing.service';
   templateUrl: './appeal-item.component.html',
   styleUrls: ['./appeal-item.component.scss']
 })
-export class AppealItemComponent implements OnInit {
+export class AppealItemComponent {
   @Input() name = '';
   @Input() midlename = '';
   @Input() surname? = '';
@@ -15,9 +15,6 @@ export class AppealItemComponent implements OnInit {
   @Input() index!: number;
 
   constructor(private dataProcessingService: DataProcessingService) { }
-
-  ngOnInit(): void {
-  }
 
   deleteAppealItem(event: Event) {
     event.stopPropagation();

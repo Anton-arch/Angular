@@ -3,8 +3,8 @@
   <div class="headers">
     <div class="headers-name">Имя</div>
     <div class="headers-midlename">
-      <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path opacity="0.54" fill-rule="evenodd" clip-rule="evenodd" d="M0 8L1.225 9.4L6.125 3.8L6.125 16L7.875 16L7.875 3.8L12.775 9.4L14 8L7 0L0 8Z" fill="black"/>
+      <svg id="up-arrow" width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <use xlink:href="./../../assets/sprite.svg#up-arrow"></use>
       </svg>
       Фамилия
     </div>
@@ -44,17 +44,17 @@
     <span class="pagination-text1">
       Rows per page: {{ appeals.length }}
       <svg width="10" height="5" viewBox="0 0 10 5" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0L5 5L10 0H0Z" fill="black" fill-opacity="0.54"/>
+        <use xlink:href="../../assets/sprite.svg#triangle-down"></use>
       </svg>
     </span>
 
     <span class="pagination-text2">1-{{ appeals.length }} of 13</span>
     <svg width="8" height="16" viewBox="0 0 8 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path fill-rule="evenodd" clip-rule="evenodd" d="M8 14L3.4 8L8 1.86667L6.6 0L0.6 8L6.6 16L8 14Z" fill="black" fill-opacity="0.54"/>
+      <use xlink:href="./../../assets/sprite.svg#arrow-left"></use>
     </svg>
     <div class="pagination-counter">1</div>
     <svg width="8" height="16" viewBox="0 0 8 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path fill-rule="evenodd" clip-rule="evenodd" d="M0 14L4.6 8L0 1.86667L1.4 0L7.4 8L1.4 16L0 14Z" fill="black" fill-opacity="0.54"/>
+      <use xlink:href="./../../assets/sprite.svg#arrow-right"></use>
     </svg>
   </div>
 </div>

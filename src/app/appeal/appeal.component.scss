@@ -1,3 +1,10 @@
+$white: #fff;
+$blue: #2F80ED;
+$light-gray: #C4C4C4;
+$gray: #757575;
+$shadow: rgba(0, 0, 0, .5);
+$no-shadow: rgba(0, 0, 0, 0);
+
 p {
   margin: 0;
 }
@@ -8,14 +15,14 @@ p {
   left: 0;
   width: 100%;
   height: 100%;
-  background: #fff;
+  background: $white;
 
   .title {
     margin: 0;
     padding: 24px 23px 19px 27px;
     font-size: 20px;
-    color: #fff;
-    background: #2F80ED;
+    color: $white;
+    background: $blue;
   }
 
   .container {
@@ -23,12 +30,12 @@ p {
     max-width: 1320px;
 
     .block {
-      border-bottom: 1px solid #C4C4C4;
+      border-bottom: 1px solid $light-gray;
       padding: 24px 18px 23px 18px;
 
       &-description {
         font-size: 14px;
-        color: #757575;
+        color: $gray;
 
         &.text {
           display: block;
@@ -50,14 +57,14 @@ p {
         padding: 10px 30px;
         border-radius: 4px;
         font-size: 14px;
-        color: #fff;
-        background: #2F80ED;
-        filter: drop-shadow(0 3px 3px rgba(0, 0, 0, .5));
+        color: $white;
+        background:$blue;
+        filter: drop-shadow(0 3px 3px $shadow);
         cursor: pointer;
         transition: filter .1s ease-in-out;
 
         &:active {
-          filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0));
+          filter: drop-shadow(0 3px 3px $no-shadow);
         }
       }
     }

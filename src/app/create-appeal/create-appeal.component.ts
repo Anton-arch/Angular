@@ -1,5 +1,7 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable, Subject } from 'rxjs';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 import { IAppeal } from '../appeal-page/appeal-page.component';
 import { DataProcessingService } from '../data-processing.service';
 
@@ -9,10 +11,10 @@ import { DataProcessingService } from '../data-processing.service';
   styleUrls: ['./create-appeal.component.scss']
 })
 export class CreateAppealComponent implements OnInit {
-
-  completed = false;
   form!: FormGroup;
   checked = false;
+  $blue = '#2F80ED';
+  completed = false;
 
   constructor(
     private dataProcessingService: DataProcessingService,
@@ -29,29 +31,38 @@ export class CreateAppealComponent implements OnInit {
       midlename: new FormControl('', [
         Validators.required
       ]),
-      surname: new FormControl('', [
-
-      ]),
+      surname: new FormControl(''),
       hasntSurname: new FormControl(this.checked),
       tel: new FormControl('', [
-
+        Validators.required,
       ]),
       text: new FormControl('',[
         Validators.required,
         Validators.maxLength(1024)
       ]),
     });
-
   }
 
   submit() {
+    const sbj = new Subject<number>();
+    const obs = new Observable<number>(observer => {
+      let conter = 1;
+      setInterval(() => {
+        observer.next(conter++)
+      }, 1000)
+    })
+
+    obs.subscribe(val => console.log(val));
+
+    // sbj.subscribe((vl) => console.log(`1st: ${vl}`));
+    // sbj.next(3);
+    // sbj.subscribe((vl) => console.log(`2nd: ${vl}`));
+    // sbj.next(9);
+
 
     if(this.form.valid) {
       const formData: IAppeal = {...this.form.value};
       this.dataProcessingService.addAppeal(formData);
-
-      console.log(formData.tel.length)
-
       this.checked = false;
       this.form.reset();
     }
@@ -62,17 +73,17 @@ export class CreateAppealComponent implements OnInit {
     if(this.checked) this.form.get('surname')?.setValue('');
   }
 
-  focused(event: Event) {
-    this.renderer.setStyle(event.composedPath()[2], 'border-color', '#2F80ED');
-    this.renderer.setStyle(event.composedPath()[2], 'color', '#2F80ED');
+  onFocused(event: Event) {
+    this.renderer.setStyle(event.composedPath()[2], 'border-color', this.$blue);
+    this.renderer.setStyle(event.composedPath()[2], 'color', this.$blue);
   }
 
-  blured(event: Event) {
+  onBlured(event: Event) {
     this.renderer.setStyle(event.composedPath()[2], 'border-color', null);
     this.renderer.setStyle(event.composedPath()[2], 'color', null);
   }
 
-  comleted() {
+  onComplete() {
     this.completed = true;
   }
 }

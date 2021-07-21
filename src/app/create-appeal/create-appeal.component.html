@@ -6,9 +6,10 @@
       <small
         class="valid-field"
         *ngIf="form.get('name')?.touched && form.get('name')?.value === ''"
-      >Поле обязательно для заполнения</small>
+      >
+        Поле обязательно для заполнения
+      </small>
     </fieldset>
-
 
     <fieldset class="fieldset">
       <legend class="legend">Фамилия</legend>
@@ -16,9 +17,10 @@
       <small
         class="valid-field"
         *ngIf="form.get('midlename')?.touched && form.get('midlename')?.value === ''"
-      >Поле обязательно для заполнения</small>
+      >
+        Поле обязательно для заполнения
+      </small>
     </fieldset>
-
 
     <fieldset class="fieldset" [disabled]="checked">
       <legend class="legend">Отчество</legend>
@@ -26,9 +28,10 @@
       <small
         class="valid-field"
         *ngIf="form.get('surname')?.touched && !checked && form.get('surname')?.value === ''"
-      >Поле обязательно для заполнения, либо поставьте галочу напротив "Нет отчества"</small>
+      >
+        Поле обязательно для заполнения, либо поставьте галочу напротив "Нет отчества"
+      </small>
     </fieldset>
-
 
     <label class="label">
       <input
@@ -38,8 +41,10 @@
         (click)="onChangeChecked()"
         formControlName="hasntSurname"
       >
-        <span class="custom-checkbox"></span>
-        <span class="label-text">Нет отчества</span>
+      <span class="custom-checkbox"></span>
+      <span class="label-text">
+        Нет отчества
+      </span>
     </label>
 
     <fieldset class="fieldset">
@@ -55,18 +60,22 @@
         placeholder="+7 (...) ......."
         slotChar="."
         [autoClear]='false'
-        (onFocus)="focused($event)"
-        (onBlur)="blured($event)"
-        (onComplete)="comleted()"
+        (onFocus)="onFocused($event)"
+        (onBlur)="onBlured($event)"
+        (onComplete)="onComplete()"
       ></p-inputMask>
       <small
         class="valid-field"
         *ngIf="form.get('tel')?.touched && form.get('tel')?.value === ''"
-      >Поле обязательно для заполнения</small>
+      >
+        Поле обязательно для заполнения
+      </small>
       <small
         class="valid-field"
-        *ngIf="!completed && form.get('tel')?.touched && form.get('tel')?.value !== ''"
-      >Поле заполнено не до конца</small>
+        *ngIf="form.get('tel')?.value !== '' && !completed"
+      >
+        Поле заполнено не до конца
+      </small>
     </fieldset>
 
     <fieldset class="fieldset">
@@ -75,7 +84,9 @@
       <small
         class="valid-field"
         *ngIf="form.get('text')?.touched && form.get('text')?.value === ''"
-      >Поле обязательно для заполнения</small>
+      >
+        Поле обязательно для заполнения
+      </small>
     </fieldset>
 
     <button class="subj-btn" type="submit">Создать обращение</button>

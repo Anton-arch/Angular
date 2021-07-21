@@ -20,7 +20,8 @@ export class ModalQuestionComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck() {
-    this.dataProcessingService.modalIsVisible ? this.renderer.setStyle(this.modal?.nativeElement, 'visibility', 'visible') : this.renderer.setStyle(this.modal?.nativeElement, 'visibility', 'hidden');
+    this.dataProcessingService.modalIsVisible ? this.renderer.setStyle(this.modal?.nativeElement, 'visibility', 'visible')
+                                              : this.renderer.setStyle(this.modal?.nativeElement, 'visibility', 'hidden');
   }
 
   onCancelRemoveAppelaItem() {

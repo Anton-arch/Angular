@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { IAppeal } from './appeal-page/appeal-page.component';
 
 @Injectable({
@@ -13,11 +14,8 @@ export class DataProcessingService  {
 
   constructor(private http: HttpClient) {}
 
-  fetchData() {
-    this.http.get<IAppeal[]>('./../assets/data.json')
-      .subscribe((value: IAppeal[]) => {
-        this.data = value;
-      })
+  fetchData(): Observable<IAppeal[]> {
+    return this.http.get<IAppeal[]>('./../assets/data.json')
   }
 
   getByIndex(index: number) {
@@ -35,6 +33,9 @@ export class DataProcessingService  {
   getData() {
     if(!this.data.length) {
       this.fetchData()
+        .subscribe((value: IAppeal[]) => {
+          this.data = value;
+        })
     }
   }
 }

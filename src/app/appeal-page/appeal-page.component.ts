@@ -15,7 +15,6 @@ export interface IAppeal {
   styleUrls: ['./appeal-page.component.scss'],
 })
 export class AppealPageComponent implements OnInit, DoCheck {
-
   searchInput = '';
   modalVisible = false;
   appeals: IAppeal[] = [];
@@ -23,12 +22,12 @@ export class AppealPageComponent implements OnInit, DoCheck {
 
   constructor(private dataProcessingService: DataProcessingService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.dataProcessingService.getData();
   }
 
   ngDoCheck() {
     this.appeals = this.dataProcessingService.data;
     this.loading = true;
   }
-
 }

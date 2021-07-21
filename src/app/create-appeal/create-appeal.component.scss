@@ -1,5 +1,9 @@
 $blue: #2F80ED;
 $white: #fff;
+$opacity-dark-blue: rgba(38, 50, 56, .26);
+$orangered: orangered;
+$shadow: rgba(0, 0, 0, 0.44);
+$no-shadow: rgba(0, 0, 0, 0);
 
 .container {
   margin: 0 auto;
@@ -14,12 +18,12 @@ $white: #fff;
     .valid-field {
       position: absolute;
       margin-top: 3px;
-      color: orangered;
+      color: $orangered;
     }
 
     .fieldset {
       margin-bottom: 21px;
-      border: 1px solid rgba(38, 50, 56, .26);
+      border: 1px solid $opacity-dark-blue;
       padding: 1px 25px 1px 6px;
       border-radius: 8px;
       transition: border-color .1s ease-in-out, color .1s ease-in-out;
@@ -96,7 +100,7 @@ $white: #fff;
         position: relative;
         display: inline-block;
         margin-right: 34px;
-        border: 1px solid rgba(38, 50, 56, .26);
+        border: 1px solid $opacity-dark-blue;
         width: 17px;
         height: 17px;
         border-radius: 2px;
@@ -141,12 +145,12 @@ $white: #fff;
       background: $blue;
       letter-spacing: 0.16px;
       transform: translateX(8px);
-      filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.44));
+      filter: drop-shadow(0px 2px 5px $shadow);
       cursor: pointer;
       transition: filter .1s ease-in-out;
 
       &:active {
-        filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0));
+        filter: drop-shadow(0px 2px 5px $no-shadow);
       }
     }
   }

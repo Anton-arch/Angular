@@ -1,13 +1,16 @@
+$light-gray: #E0E0E0;
+$shadow: rgba(0, 0, 0, .5);
+
 .appeal-item {
   display: flex;
-  border-bottom: 1px solid #E0E0E0;
+  border-bottom: 1px solid $light-gray;
   padding-right: 14px;
   align-items: center;
   transition: filter .15s ease-in-out;
   cursor: pointer;
 
   &:hover {
-    filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, .5));
+    filter: drop-shadow(3px 3px 3px $shadow);
   }
 
   .shape-btn {
@@ -23,7 +26,7 @@
     transition: filter .1s ease-in-out;
 
     &:hover {
-      filter: drop-shadow(0 0 5px rgb(0, 0, 0))
+      filter: drop-shadow(0 0 5px $shadow)
     }
   }
 
