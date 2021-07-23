@@ -15,7 +15,7 @@ export class DataProcessingService  {
   constructor(private http: HttpClient) {}
 
   fetchData(): Observable<IAppeal[]> {
-    return this.http.get<IAppeal[]>('./../assets/data.json')
+    return this.http.get<IAppeal[]>('./../assets/data.json');
   }
 
   getByIndex(index: number) {

@@ -1,4 +1,5 @@
-import { Component, DoCheck, OnInit } from '@angular/core';
+import { Component, DoCheck, OnDestroy, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { DataProcessingService } from '../data-processing.service';
 
 export interface IAppeal {
@@ -14,7 +15,7 @@ export interface IAppeal {
   templateUrl: './appeal-page.component.html',
   styleUrls: ['./appeal-page.component.scss'],
 })
-export class AppealPageComponent implements OnInit, DoCheck {
+export class AppealPageComponent implements OnInit, DoCheck, OnDestroy {
   searchInput = '';
   modalVisible = false;
   appeals: IAppeal[] = [];
@@ -26,8 +27,17 @@ export class AppealPageComponent implements OnInit, DoCheck {
     this.dataProcessingService.getData();
   }
 
+  // stream$ = new BehaviorSubject([]).subscribe(() => {
+  //   this.appeals = this.dataProcessingService.data;
+  //   this.loading = true;
+  // });
+
   ngDoCheck() {
     this.appeals = this.dataProcessingService.data;
     this.loading = true;
+  }
+
+  ngOnDestroy() {
+    // this.stream$.unsubscribe();
   }
 }
