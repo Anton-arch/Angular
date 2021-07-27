@@ -11,7 +11,7 @@ export class FiterPipePipe implements PipeTransform {
       return appeals;
     }
 
-    return appeals.filter(item => item.midlename.toLowerCase().includes(search.toLowerCase()))
+    return appeals.filter(item => item.middleName?.toLowerCase().includes(search.toLowerCase()))
   }
 
 }

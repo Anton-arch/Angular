@@ -3,10 +3,11 @@ import { BehaviorSubject } from 'rxjs';
 import { DataProcessingService } from '../data-processing.service';
 
 export interface IAppeal {
-  name: string,
-  midlename: string,
-  surname?: string,
-  tel: string,
+  firstName: string,
+  lastName: string,
+  withoutMiddleName: boolean,
+  middleName?: string,
+  userPhone: string,
   text: string,
 }
 

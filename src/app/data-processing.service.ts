@@ -1,6 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { ApiService } from './api.service';
 import { IAppeal } from './appeal-page/appeal-page.component';
 
 @Injectable({
@@ -12,11 +11,7 @@ export class DataProcessingService  {
   modalIsVisible = false;
   data: IAppeal[] = [];
 
-  constructor(private http: HttpClient) {}
-
-  fetchData(): Observable<IAppeal[]> {
-    return this.http.get<IAppeal[]>('./../assets/data.json');
-  }
+  constructor(private apisService: ApiService) {}
 
   getByIndex(index: number) {
     return this.data.find((appeal: IAppeal) => this.data.indexOf(appeal) === index);
@@ -27,15 +22,22 @@ export class DataProcessingService  {
   }
 
   addAppeal(appeal: IAppeal) {
-    this.data.unshift(appeal);
+    this.apisService.postData(appeal)
+      .subscribe((value: IAppeal) => {
+        this.apisService.fetchData(0, 13)
+          .subscribe((value: any) => {
+            console.log(value)
+          })
+      })
   }
 
   getData() {
     if(!this.data.length) {
-      this.fetchData()
-        .subscribe((value: IAppeal[]) => {
-          this.data = value;
+      this.apisService.fetchData(0, 13)
+        .subscribe((value: any) => {
+          this.data = value.orders;
         })
     }
   }
+
 }

@@ -7,10 +7,10 @@ import { DataProcessingService } from '../data-processing.service';
   styleUrls: ['./appeal-item.component.scss']
 })
 export class AppealItemComponent {
-  @Input() name = '';
-  @Input() midlename = '';
-  @Input() surname? = '';
-  @Input() tel = '';
+  @Input() firstName = '';
+  @Input() lastName = '';
+  @Input() middleName? = '';
+  @Input() userPhone = '';
   @Input() text = '';
   @Input() index!: number;
 

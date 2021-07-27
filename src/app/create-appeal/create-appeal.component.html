@@ -2,10 +2,10 @@
   <form class="form" [formGroup]="form" (ngSubmit)="submit()">
     <fieldset class="fieldset">
       <legend class="legend">Имя</legend>
-      <input  class="input-field" type="text" name="name" formControlName="name" appInputFocused>
+      <input  class="input-field" type="text" name="firstName" formControlName="firstName" appInputFocused>
       <small
         class="valid-field"
-        *ngIf="form.get('name')?.touched && form.get('name')?.value === ''"
+        *ngIf="form.get('firstName')?.touched && form.get('firstName')?.value === ''"
       >
         Поле обязательно для заполнения
       </small>
@@ -13,10 +13,10 @@
 
     <fieldset class="fieldset">
       <legend class="legend">Фамилия</legend>
-      <input class="input-field" type="text" name="midlename" formControlName="midlename" appInputFocused>
+      <input class="input-field" type="text" name="lastName" formControlName="lastName" appInputFocused>
       <small
         class="valid-field"
-        *ngIf="form.get('midlename')?.touched && form.get('midlename')?.value === ''"
+        *ngIf="form.get('lastName')?.touched && form.get('lastName')?.value === ''"
       >
         Поле обязательно для заполнения
       </small>
@@ -24,10 +24,10 @@
 
     <fieldset class="fieldset" [disabled]="checked">
       <legend class="legend">Отчество</legend>
-      <input class="input-field" type="text" name="surname" formControlName="surname" appInputFocused>
+      <input class="input-field" type="text" name="middleName" formControlName="middleName" appInputFocused>
       <small
         class="valid-field"
-        *ngIf="form.get('surname')?.touched && !checked && form.get('surname')?.value === ''"
+        *ngIf="form.get('middleName')?.touched && !checked && form.get('middleName')?.value === ''"
       >
         Поле обязательно для заполнения, либо поставьте галочу напротив "Нет отчества"
       </small>
@@ -39,7 +39,7 @@
         type="checkbox"
         [checked]="checked"
         (click)="onChangeChecked()"
-        formControlName="hasntSurname"
+        formControlName="withoutMiddleName"
       >
       <span class="custom-checkbox"></span>
       <span class="label-text">
@@ -53,10 +53,10 @@
         class="input-field"
         styleClass="input-field"
         type="tel"
-        name="tel"
-        formControlName="tel"
+        name="userPhone"
+        formControlName="userPhone"
         appInputFocused
-        mask="+7 (999) 9999999"
+        mask="+79999999999"
         placeholder="+7 (...) ......."
         slotChar="."
         [autoClear]='false'
@@ -66,13 +66,13 @@
       ></p-inputMask>
       <small
         class="valid-field"
-        *ngIf="form.get('tel')?.touched && form.get('tel')?.value === ''"
+        *ngIf="form.get('userPhone')?.touched && form.get('userPhone')?.value === ''"
       >
         Поле обязательно для заполнения
       </small>
       <small
         class="valid-field"
-        *ngIf="form.get('tel')?.value !== '' && !completed"
+        *ngIf="form.get('userPhone')?.value !== '' && !completed"
       >
         Поле заполнено не до конца
       </small>

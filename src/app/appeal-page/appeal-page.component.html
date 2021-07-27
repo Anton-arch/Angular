@@ -18,10 +18,10 @@
       <ul class="list-appeals">
         <app-appeal-item
           *ngFor="let item of appeals | fiterPipe:searchInput; let idx = index"
-          [name]="item.name"
-          [midlename]="item.midlename"
-          [surname]="item.surname"
-          [tel]="item.tel"
+          [firstName]="item.firstName"
+          [lastName]="item.lastName"
+          [middleName]="item.middleName"
+          [userPhone]="item.userPhone"
           [text]="item.text"
           [index]="idx"
         >
