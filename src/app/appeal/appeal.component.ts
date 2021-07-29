@@ -8,7 +8,6 @@ import { DataProcessingService } from '../data-processing.service';
   styleUrls: ['./appeal.component.scss'],
 })
 export class AppealComponent implements OnInit {
-  delIdx!: number;
   appeal!: any;
 
   constructor(
@@ -19,12 +18,11 @@ export class AppealComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
       this.appeal = this.dataProcessingService.getByIndex(+params.index);
-      this.delIdx = +params.index;
     });
   }
 
   deleteAppeal() {
     this.dataProcessingService.modalIsVisible = true;
-    this.dataProcessingService.delIdx = this.delIdx;
+    this.dataProcessingService.delIdx = this.appeal.orderId
   }
 }

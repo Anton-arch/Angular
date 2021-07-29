@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { IAppeal } from './appeal-page/appeal-page.component';
 
 @Pipe({
-  name: 'fiterPipe'
+  name: 'fiterPipe',
+  pure: false //стратегия поведения пайпа, влияет на его оптимизацию
 })
 export class FiterPipePipe implements PipeTransform {
 

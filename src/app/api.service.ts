@@ -4,10 +4,14 @@ import { Observable } from 'rxjs';
 import { IAppeal } from './appeal-page/appeal-page.component';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
+
+  preFetchData() {
+    return this.http.get('/orders/getAllOrders');
+  }
 
   fetchData(skip: number, take: number): Observable<IAppeal[]> {
     return this.http.get<IAppeal[]>(`/orders/getAllOrders/${skip}/${take}`);
@@ -17,7 +21,7 @@ export class ApiService {
     return this.http.post<IAppeal>('/orders/createOrder', appeal);
   }
 
-  deleteData(idx: number) {
+  deleteData(idx?: number) {
     return this.http.delete<IAppeal>(`/orders/deleteOrder/${idx}`);
   }
 }

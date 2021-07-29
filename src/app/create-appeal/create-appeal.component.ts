@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IAppeal } from '../appeal-page/appeal-page.component';
@@ -17,13 +16,10 @@ export class CreateAppealComponent implements OnInit {
 
   constructor(
     private dataProcessingService: DataProcessingService,
-    private renderer: Renderer2,
-    private http: HttpClient
+    private renderer: Renderer2
   ) {}
 
   ngOnInit() {
-    this.dataProcessingService.getData();
-
     this.form = new FormGroup({
       firstName: new FormControl('', [Validators.required]),
       lastName: new FormControl('', [Validators.required]),

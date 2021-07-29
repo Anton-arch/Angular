@@ -1,14 +1,14 @@
-import { Component, DoCheck, OnDestroy, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { DataProcessingService } from '../data-processing.service';
 
 export interface IAppeal {
-  firstName: string,
-  lastName: string,
-  withoutMiddleName: boolean,
-  middleName?: string,
-  userPhone: string,
-  text: string,
+  firstName: string;
+  lastName: string;
+  withoutMiddleName: boolean;
+  middleName?: string;
+  userPhone: string;
+  text: string;
+  orderId?: number;
 }
 
 @Component({
@@ -16,29 +16,26 @@ export interface IAppeal {
   templateUrl: './appeal-page.component.html',
   styleUrls: ['./appeal-page.component.scss'],
 })
-export class AppealPageComponent implements OnInit, DoCheck, OnDestroy {
+export class AppealPageComponent implements OnInit, DoCheck {
   searchInput = '';
   modalVisible = false;
   appeals: IAppeal[] = [];
   loading = false;
 
-  constructor(private dataProcessingService: DataProcessingService) { }
+  constructor(
+    private dataProcessingService: DataProcessingService
+  ) {}
 
   ngOnInit() {
     this.dataProcessingService.getData();
   }
 
-  // stream$ = new BehaviorSubject([]).subscribe(() => {
-  //   this.appeals = this.dataProcessingService.data;
-  //   this.loading = true;
-  // });
-
   ngDoCheck() {
     this.appeals = this.dataProcessingService.data;
-    this.loading = true;
+    this.loading = this.dataProcessingService.loading;
   }
 
-  ngOnDestroy() {
-    // this.stream$.unsubscribe();
+  reloadInfo() {
+    this.dataProcessingService.reloadData();
   }
 }

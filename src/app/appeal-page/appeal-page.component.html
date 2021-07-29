@@ -1,5 +1,8 @@
 <div class="container">
   <input class="input-search" type="text" placeholder="Имя, фамилия, отчество, номер..." [(ngModel)]="searchInput">
+  <button type="button" class="reloda-data-btn" (click)="reloadInfo()">Reload</button>
+  <!-- <button type="button" pButton label="Reload data"></button> -->
+  <!-- <button type="button" pButton label="Reload info" class="p-button-outlined p-button-info" (click)="reloadInfo()"></button> -->
   <div class="headers">
     <div class="headers-name">Имя</div>
     <div class="headers-midlename">
@@ -24,6 +27,7 @@
           [userPhone]="item.userPhone"
           [text]="item.text"
           [index]="idx"
+          [orderId]="item.orderId"
         >
         </app-appeal-item>
       </ul>
@@ -34,7 +38,7 @@
   </div>
   <ng-template #loadText class="load-text">
     <h2>
-      Занрузка ...
+      Загрузка ...
     </h2>
   </ng-template>
 

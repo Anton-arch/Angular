@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { IAppeal } from './appeal-page/appeal-page.component';
+import { interval } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class DataProcessingService  {
-
-  delIdx!: number;
+export class DataProcessingService {
+  delIdx?: number;
   modalIsVisible = false;
   data: IAppeal[] = [];
+  loading = false;
 
   constructor(private apisService: ApiService) {}
 
@@ -17,27 +18,53 @@ export class DataProcessingService  {
     return this.data.find((appeal: IAppeal) => this.data.indexOf(appeal) === index);
   }
 
-  filterData(delIdx: number) {
-    this.data = this.data.filter((item: IAppeal) => this.data.indexOf(item) !== delIdx);
+  filterData(delIdx?: number) {
+    this.apisService.deleteData(delIdx).subscribe(() => {
+      this.apisService.preFetchData().subscribe((val: any) => {
+        this.apisService.fetchData(0, val.total).subscribe((value: any) => {
+          this.data = value.orders;
+        });
+      });
+    });
   }
 
   addAppeal(appeal: IAppeal) {
-    this.apisService.postData(appeal)
-      .subscribe((value: IAppeal) => {
-        this.apisService.fetchData(0, 13)
-          .subscribe((value: any) => {
-            console.log(value)
-          })
-      })
+    this.apisService.postData(appeal).subscribe((value: IAppeal) => {
+      this.apisService.preFetchData().subscribe((val: any) => {
+        this.apisService.fetchData(0, val.total).subscribe((value: any) => {
+          this.data = value.orders;
+        });
+      });
+    });
   }
 
   getData() {
-    if(!this.data.length) {
-      this.apisService.fetchData(0, 13)
-        .subscribe((value: any) => {
+    if (!this.data.length) {
+      this.apisService.preFetchData().subscribe((val: any) => {
+        this.apisService.fetchData(0, val.total).subscribe((value: any) => {
           this.data = value.orders;
-        })
+          this.loading = true;
+        });
+      });
     }
+
+    interval(30000)
+      .subscribe(() => {
+        this.apisService.preFetchData().subscribe((val: any) => {
+          this.apisService.fetchData(0, val.total).subscribe((value: any) => {
+            this.data = value.orders;
+          });
+        });
+      })
   }
 
+  reloadData() {
+    this.loading = false;
+    this.apisService.preFetchData().subscribe((val: any) => {
+      this.apisService.fetchData(0, val.total).subscribe((value: any) => {
+        this.data = value.orders;
+        this.loading = true;
+      });
+    });
+  }
 }

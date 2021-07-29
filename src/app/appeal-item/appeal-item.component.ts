@@ -13,12 +13,13 @@ export class AppealItemComponent {
   @Input() userPhone = '';
   @Input() text = '';
   @Input() index!: number;
+  @Input() orderId?: number;
 
   constructor(private dataProcessingService: DataProcessingService) { }
 
   deleteAppealItem(event: Event) {
     event.stopPropagation();
     this.dataProcessingService.modalIsVisible = true;
-    this.dataProcessingService.delIdx = this.index;
+    this.dataProcessingService.delIdx = this.orderId;
   }
 }

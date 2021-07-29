@@ -7,6 +7,7 @@ $headers: rgba(0, 0, 0, 0.56);
   padding: 22px 1px 37px 29px;
 
   .input-search {
+    margin-right: 15px;
     margin-bottom: 23px;
     margin-left: 12px;
     border: 1px solid $lightgrey;
@@ -20,6 +21,25 @@ $headers: rgba(0, 0, 0, 0.56);
     &:focus {
       outline: none;
       border-color: $blue;
+    }
+  }
+
+  .reloda-data-btn {
+    border: none;
+    padding: 9px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 3px rgba(0, 0, 0, .5);
+    transition: box-shadow .1s ease-in-out, transform .1s ease-in-out, background .1s ease-in-out;
+
+    &:hover {
+      background: lightblue;
+    }
+
+    &:active {
+      transform: translateY(0);
+      box-shadow: 0 0 3px rgba(0, 0, 0, .2);
     }
   }
 
