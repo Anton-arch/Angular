@@ -14,7 +14,7 @@ import { DataProcessingService } from '../data-processing.service';
   styleUrls: ['./modal-question.component.scss'],
 })
 export class ModalQuestionComponent implements DoCheck {
-  @ViewChild('modal') modal: ElementRef | undefined;
+  @ViewChild('modal', { static: true }) modal: ElementRef | undefined;
 
   constructor(
     private renderer: Renderer2,
