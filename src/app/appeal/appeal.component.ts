@@ -8,12 +8,12 @@ import { DataProcessingService } from '../data-processing.service';
   styleUrls: ['./appeal.component.scss'],
 })
 export class AppealComponent implements OnInit {
-  appeal!: any;
+  appeal: any;
 
   constructor(
     private route: ActivatedRoute,
     private dataProcessingService: DataProcessingService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
@@ -23,6 +23,6 @@ export class AppealComponent implements OnInit {
 
   deleteAppeal() {
     this.dataProcessingService.modalIsVisible = true;
-    this.dataProcessingService.delIdx = this.appeal.orderId
+    this.dataProcessingService.delIdx = this.appeal.orderId;
   }
 }

@@ -36,10 +36,10 @@ export class CreateAppealComponent implements OnInit {
   submit(): void {
     if (this.form.valid) {
       const formData: IAppeal = { ...this.form.value };
-      console.log(formData)
       this.dataProcessingService.addAppeal(formData);
-      this.checked = false;
       this.form.reset();
+      this.form.controls.withoutMiddleName.setValue(this.checked);
+      this.checked = false;
     }
   }
 
@@ -56,16 +56,5 @@ export class CreateAppealComponent implements OnInit {
   onBlured(event: Event): void {
     this.renderer.setStyle(event.composedPath()[2], 'border-color', null);
     this.renderer.setStyle(event.composedPath()[2], 'color', null);
-  }
-
-  onKeydown() {
-    this.completed = true;
-
-    if (
-      this.form.get('userPhone')?.value.length === 0 ||
-      this.form.get('userPhone')?.value.includes('.')
-    ) {
-      this.completed = false;
-    }
   }
 }

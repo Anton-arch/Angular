@@ -62,19 +62,12 @@
         [autoClear]='false'
         (onFocus)="onFocused($event)"
         (onBlur)="onBlured($event)"
-        (onKeydown)="onKeydown()"
       ></p-inputMask>
       <small
         class="valid-field"
         *ngIf="form.get('userPhone')?.touched && form.get('userPhone')?.value === ''"
       >
         Поле обязательно для заполнения
-      </small>
-      <small
-        class="valid-field"
-        *ngIf="form.get('userPhone')?.value !== '' && !completed"
-      >
-        Поле заполнено не до конца
       </small>
     </fieldset>
 

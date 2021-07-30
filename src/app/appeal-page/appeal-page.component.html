@@ -1,3 +1,7 @@
+<div class="loading-overlay" [ngStyle]="{'visibility': dataProcessingService.deleteAppealOverlay ? 'visible' : 'hidden'}">
+  <h2 class="loading-overlay-text">Удаление...</h2>
+</div>
+
 <div class="container">
   <input class="input-search" type="text" placeholder="Имя, фамилия, отчество, номер..." [(ngModel)]="searchInput">
   <button type="button" class="reloda-data-btn" (click)="reloadInfo()">Reload</button>
@@ -52,14 +56,19 @@
       </svg>
     </span>
 
-    <span class="pagination-text2">1-{{ appeals.length }} of 13</span>
-    <svg width="8" height="16" viewBox="0 0 8 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <use xlink:href="./../../assets/sprite.svg#arrow-left"></use>
-    </svg>
-    <div class="pagination-counter">1</div>
-    <svg width="8" height="16" viewBox="0 0 8 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <use xlink:href="./../../assets/sprite.svg#arrow-right"></use>
-    </svg>
+    <span class="pagination-text2">1-{{ appeals.length }} of {{ dataProcessingService.appealsOnPage }}</span>
+    <button class="pagination-btn" (click)="prevPage()">
+      <svg width="8" height="16" viewBox="0 0 8 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <use xlink:href="./../../assets/sprite.svg#arrow-left"></use>
+      </svg>
+    </button>
+    <div class="pagination-counter">{{ dataProcessingService.pageCounter }}</div>
+    <button class="pagination-btn" (click)="nextPage()">
+      <svg width="8" height="16" viewBox="0 0 8 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <use xlink:href="./../../assets/sprite.svg#arrow-right"></use>
+      </svg>
+    </button>
+
   </div>
 </div>
 

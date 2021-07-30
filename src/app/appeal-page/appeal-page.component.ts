@@ -22,20 +22,32 @@ export class AppealPageComponent implements OnInit, DoCheck {
   appeals: IAppeal[] = [];
   loading = false;
 
-  constructor(
-    private dataProcessingService: DataProcessingService
-  ) {}
+  constructor(public dataProcessingService: DataProcessingService) {}
 
   ngOnInit() {
     this.dataProcessingService.getData();
   }
 
   ngDoCheck() {
-    this.appeals = this.dataProcessingService.data;
     this.loading = this.dataProcessingService.loading;
+    this.appeals = this.dataProcessingService.slicingData();
   }
 
   reloadInfo() {
     this.dataProcessingService.reloadData();
+  }
+
+  prevPage() {
+    if (this.dataProcessingService.pageCounter > 1) {
+      this.dataProcessingService.pageCounter--;
+      this.appeals = this.dataProcessingService.slicingData();
+    }
+  }
+
+  nextPage() {
+    if (this.appeals.length === 13) {
+      this.dataProcessingService.pageCounter++;
+      this.appeals = this.dataProcessingService.slicingData();
+    }
   }
 }
