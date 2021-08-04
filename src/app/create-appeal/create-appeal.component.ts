@@ -38,8 +38,8 @@ export class CreateAppealComponent implements OnInit {
       const formData: IAppeal = { ...this.form.value };
       this.dataProcessingService.addAppeal(formData);
       this.form.reset();
-      this.form.controls.withoutMiddleName.setValue(this.checked);
       this.checked = false;
+      this.form.controls.withoutMiddleName.setValue(this.checked);
     }
   }
 
